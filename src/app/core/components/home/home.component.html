@@ -1,0 +1,9 @@
+<h1>Welcome</h1>
+<form [formGroup]="getByIdForm" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="Enter your id" formControlName="id"/>
+  <button type="submit">Submit</button>
+
+  <div *ngFor="let user of users">
+    <p>{{ user.id }} - {{user.firstName}} - {{user.lastName}} - {{ user.username }} - {{user.email}}</p>
+  </div>
+</form>

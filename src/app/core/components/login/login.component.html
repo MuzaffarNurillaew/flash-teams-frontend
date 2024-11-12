@@ -1,0 +1,15 @@
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="Email" formControlName="email"/>
+      <app-form-validation-error [control]="loginForm.get('email')"></app-form-validation-error>
+      <input type="password" placeholder="Password" formControlName="password"/>
+      <app-form-validation-error [control]="loginForm.get('password')"></app-form-validation-error>
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <p class="message">Not registered? <a routerLink="/signup">Create an account</a></p>
+    </form>
+    <div class="google-sign-in-button-wrapper">
+      <app-google-sign-in></app-google-sign-in>
+    </div>
+  </div>
+</div>

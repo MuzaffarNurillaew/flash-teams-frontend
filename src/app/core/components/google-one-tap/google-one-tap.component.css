@@ -1,0 +1,5 @@
+#g_id_onload {
+  position: fixed;
+  border: tomato 1px solid;
+  z-index: 1000;
+}

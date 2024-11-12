@@ -1,0 +1,30 @@
+<div class="signup-page">
+  <div class="form">
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="First name" formControlName="firstName"/>
+      <app-form-validation-error [control]="signupForm.get('firstName')"></app-form-validation-error>
+
+      <input type="text" placeholder="Last name" formControlName="lastName"/>
+      <app-form-validation-error [control]="signupForm.get('lastName')"></app-form-validation-error>
+
+      <input type="email" placeholder="Email Address" formControlName="email"/>
+      <app-form-validation-error [control]="signupForm.get('email')"></app-form-validation-error>
+
+      <input type="text" placeholder="Username" formControlName="username"/>
+      <app-form-validation-error [control]="signupForm.get('username')"></app-form-validation-error>
+
+      <input type="text" placeholder="Phone number" formControlName="phoneNumber"/>
+      <app-form-validation-error [control]="signupForm.get('phoneNumber')"></app-form-validation-error>
+
+      <input type="password" placeholder="Password" formControlName="password"/>
+      <app-form-validation-error [control]="signupForm.get('password')"></app-form-validation-error>
+
+      <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"/>
+      <app-form-validation-error [control]="signupForm.get('confirmPassword')"></app-form-validation-error>
+
+      <button type="submit" class="create-button">Create</button>
+      <p class="message">Already registered? <a routerLink="/login">Log In</a></p>
+    </form>
+    <app-google-sign-in></app-google-sign-in>
+  </div>
+</div>

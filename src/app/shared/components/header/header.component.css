@@ -1,0 +1,98 @@
+/* Reset default styling */
+* {
+  /*border: 1px solid red;*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main header styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  background-color: #333;
+  color: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: auto auto auto 1em;
+}
+
+/* Navigation links styling */
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ff6347;
+}
+
+/* Mobile menu icon styling */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+}
+
+app-google-one-tap {
+  position: fixed;
+  border: tomato 1px solid;
+  z-index: 1000;
+}

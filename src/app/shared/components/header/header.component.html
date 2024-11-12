@@ -1,0 +1,19 @@
+<header>
+  <div class="logo">
+    <img src="./assets/flash-teams.webp" alt="LOGO">
+    <a href="/">FlashTeams</a>
+  </div>
+  <nav>
+    <ul [class.active]="menuOpen" class="nav-links">
+        <li *ngIf="!authService.isLoggedIn"><a routerLink="/login">Login</a></li>
+        <li *ngIf="!authService.isLoggedIn"><a routerLink="/signup">Signup</a></li>
+        <li *ngIf="authService.isLoggedIn"><a routerLink="/" (click)="onLogoutClicked()">Logout</a></li>
+    </ul>
+    <div class="menu-icon" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  <app-google-one-tap *ngIf="!authService.isLoggedIn"></app-google-one-tap>
+</header>

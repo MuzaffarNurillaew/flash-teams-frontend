@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../../environments/environment.development';
-import {NavigationService} from '../../services/navigation.service';
+import {RoutingService} from '../../services/routing.service';
 import {AuthService} from '../../services/auth.service';
 
 declare const google: any;
@@ -13,7 +13,7 @@ declare const google: any;
   styleUrl: './google-one-tap.component.css'
 })
 export class GoogleOneTapComponent implements OnInit {
-  constructor(private authService: AuthService, private navigationService: NavigationService) {
+  constructor(private authService: AuthService, private navigationService: RoutingService) {
   }
 
     ngOnInit(): void {
@@ -36,10 +36,11 @@ export class GoogleOneTapComponent implements OnInit {
 
     this.authService.signInWithGoogle$({ token })
       .subscribe((result) => {
-        if (result) {
-          console.log("GoogleOneTapComponent: handleGoogleResponse: result: ", result);
-          this.navigationService.navigateToUrl("login/set-password");
+        if (result.isNewUser) {
+          this.navigationService.navigateToUrl("login/set-password", { email: result.email });
         }
-      });
+        else {
+          this.navigationService.navigateToUrl("/home");
+      }});
   }
 }

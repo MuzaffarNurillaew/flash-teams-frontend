@@ -9,7 +9,7 @@ import {FormValidationErrorComponent} from '../form-validation-error/form-valida
 import {LoginModel} from '../../models/auth/login.model';
 import {AuthService} from '../../services/auth.service';
 import {GoogleSignInComponent} from '../google-sign-in/google-sign-in.component';
-import {NavigationService} from '../../services/navigation.service';
+import {RoutingService} from '../../services/routing.service';
 
 @Component({
   selector: 'app-login',
@@ -27,9 +27,8 @@ import {NavigationService} from '../../services/navigation.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  returnUrl: string = '/';
 
-  constructor(private fb: FormBuilder, protected authService: AuthService, private navigationService: NavigationService) {
+  constructor(private fb: FormBuilder, protected authService: AuthService, private navigationService: RoutingService) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),

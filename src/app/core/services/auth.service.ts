@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {LoginModel} from '../models/auth/login.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment.development';
-import {AuthResultModel} from '../models/auth/auth-result.model';
+import {AuthResultModel, GoogleAuthResultModel} from '../models/auth/auth-result.model';
 import {UserCreationDto} from '../models/users/user-creation-dto';
 import {TokenService} from './token.service';
 import {Observable, tap} from 'rxjs';
@@ -37,8 +37,8 @@ export class AuthService {
       });
   }
 
-  signInWithGoogle$(googleAuthModel: GoogleAuthModel): Observable<AuthResultModel>  {
-    return this.http.post<AuthResultModel>(environment.apiUrl + environment.routes.auth.googleSignIn, googleAuthModel)
+  signInWithGoogle$(googleAuthModel: GoogleAuthModel): Observable<GoogleAuthResultModel>  {
+    return this.http.post<GoogleAuthResultModel>(environment.apiUrl + environment.routes.auth.googleSignIn, googleAuthModel)
       .pipe(tap({next: (result) => {
         this.setToken(result.token);
       }}));

@@ -8,12 +8,13 @@ import {TokenService} from './token.service';
 import {Observable, tap} from 'rxjs';
 import {Router} from '@angular/router';
 import {GoogleAuthModel} from '../models/auth/google-auth.model';
+import {SocialAuthService} from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient, private tokenService: TokenService, private  router: Router) {
+  constructor(private http: HttpClient, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService) {
   }
 
   login(loginDto: LoginModel) {
@@ -26,6 +27,7 @@ export class AuthService {
   }
 
   logout() {
+    this.socialAuthService.signOut();
     this.deleteToken();
     this.router.navigate(['/login']);
   }
@@ -62,5 +64,10 @@ export class AuthService {
 
   setMyPasswordFirstTime$(password: string) {
     return this.http.post(environment.apiUrl + environment.routes.users.setMyPasswordFirstTime, { password }, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+  }
+
+  handleGoogleResponse(response: any) {
+    const credential: string = response.credential;
+
   }
 }

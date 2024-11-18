@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {environment} from '../../../../environments/environment.development';
 import {RoutingService} from '../../services/routing.service';
 import {AuthService} from '../../services/auth.service';
@@ -12,22 +12,17 @@ declare const google: any;
   template: `<div id="g_id_onload"></div>`,
   styleUrl: './google-one-tap.component.css'
 })
-export class GoogleOneTapComponent implements OnInit {
+export class GoogleOneTapComponent implements AfterViewInit {
   constructor(private authService: AuthService, private navigationService: RoutingService) {
   }
 
-    ngOnInit(): void {
+    ngAfterViewInit(): void {
+      if (!this.authService.isLoggedIn) {
         this.initializeGoogleOneTap();
+      }
     }
 
   private initializeGoogleOneTap() {
-    google.accounts.id.initialize({
-      client_id: environment.googleClientId,
-      callback: (response: any) => {
-        this.handleGoogleResponse(response);
-      },
-    });
-
     google.accounts.id.prompt();
   }
 

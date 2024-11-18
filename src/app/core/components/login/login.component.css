@@ -45,7 +45,6 @@
 }
 
 .form .message {
-  margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
@@ -53,13 +52,4 @@
 .form .message a {
   color: #25ccab;
   text-decoration: none;
-}
-
-.login-form app-google-sign-in-button {
-  position: relative;
-  top: 10px;
-}
-.google-sign-in-button-wrapper {
-  /*position: relative;*/
-  /*top: 100px;*/
 }

@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:7098/',
+  apiUrl: 'https://flashteams-api.azurewebsites.net/',
   routes: {
     auth: {
       login: "api/login",
